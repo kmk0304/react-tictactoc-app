@@ -9,7 +9,7 @@
   transition: all 0.3s linear;
 }
 
-.itme:hover {
+.item:hover {
   width: 100%;
   transform: scale(1.02);
 }
