@@ -4,7 +4,7 @@ import ExpenseItem from './ExpenseItem'
 import { MdDelete } from 'react-icons/md'
 
 // const ExpenseList = (props) => {
-const ExpenseList = ({handleDelete, initialExpense}) => {
+const ExpenseList = ({handleDelete, initialExpense, handleEdit}) => {
   // console.log(this.props.initialExpense) //부모로부터 data Get
   // console.log(props.initialExpense)
   return (
@@ -20,6 +20,7 @@ const ExpenseList = ({handleDelete, initialExpense}) => {
               // handleDelete = {this.props.handleDelete}
               // handleDelete = {props.handleDelete}
               handleDelete = {handleDelete}
+              handleEdit = {handleEdit}
             />
           )            
         })}

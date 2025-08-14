@@ -3,7 +3,7 @@ import './ExpenseItem.css'
 import {MdDelete, MdEdit} from 'react-icons/md'
 
 // export class ExpenseItem extends Component {
-const ExpenseItem = ({expense, handleDelete}) =>{
+const ExpenseItem = ({expense, handleDelete, handleEdit}) =>{
   // render() {
     return (
       <li className='item'>
@@ -14,7 +14,10 @@ const ExpenseItem = ({expense, handleDelete}) =>{
           <span className='amount'>{expense.amount}</span>
         </div>
         <div>
-          <button className='edit-btn'><MdEdit/></button>
+          <button 
+            className='edit-btn'
+            onClick={() => handleEdit(expense.id)}
+          ><MdEdit/></button>
           <button 
             className='clear-btn'
             onClick={()=>
