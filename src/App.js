@@ -5,18 +5,34 @@ import ExpenseList from "./components/ExpenseList";
 
 
 class App extends Component{
-
-  initialExpense = [
-    {id:1, charge: "렌트비", amount: 1600},
-    {id:2, charge: "교통비", amount: 400},
-    {id:3, charge: "식비", amount: 1200},
-  ]
-
+  constructor(props) {
+    super(props)  //constructor 내 this. 사용하기 위해 정의 
+    this.state = {
+      expenses: [{
+          id: 1,
+          charge: "렌트비",
+          amount: 1600
+        },
+        {
+          id: 2,
+          charge: "교통비",
+          amount: 400
+        },
+        {
+          id: 3,
+          charge: "식비",
+          amount: 1200
+        },
+      ]
+    }
+  }
+ 
   handleDelete = (id) => {
-    const newExpenses = this.initialExpense.filter(expense =>
+    const newExpenses = this.state.expenses.filter(expense =>
        expense.id !== id
     )
     console.log(newExpenses)
+    this.setState({expenses: newExpenses})
   }
 
   render(){
@@ -31,7 +47,7 @@ class App extends Component{
         <div style = {{width:'100%',backgroundColor: 'white', padding: '1rem' }}>
           {/* Expense List */}
           <ExpenseList 
-            initialExpense = {this.initialExpense}
+            initialExpense = {this.state.expenses}
             handleDelete = {this.handleDelete}
             />
         </div>
