@@ -70,7 +70,7 @@ import Alert from "./components/Alert";
         })
         setExpenses(newExpenses)
         setEdit(false)
-        handleAlert({type:"success", text: "아이템이 수정되었스빈다."})
+        handleAlert({type:"success", text: "아이템이 수정되었습니다."})
       } else{
         const newExpense = {id: crypto.randomUUID(), charge, amount}
         //불변성을 지켜주기 위해 새로운 expenses 생성
@@ -106,6 +106,10 @@ import Alert from "./components/Alert";
     },7000)
   }
 
+  const clearItems = () =>{
+    setExpenses([])
+  }
+
   const handleEdit = id =>{
     console.log(id)
     const expense = expenses.find(item => item.id === id);
@@ -138,9 +142,10 @@ import Alert from "./components/Alert";
           <ExpenseList 
             // initialExpense = {this.state.expenses}
             // handleDelete = {this.handleDelete}
-            initialExpense = {expenses}
+            expenses = {expenses}
             handleDelete = {handleDelete}
             handleEdit = {handleEdit}
+            clearItems = {clearItems}
           />
         </div>
 
