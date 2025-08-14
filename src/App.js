@@ -2,6 +2,7 @@ import { Component, useState } from "react"
 import "./App.css";
 import ExpenseForm from "./components/ExpenseForm";
 import ExpenseList from "./components/ExpenseList";
+import Alert from "./components/Alert";
 
 
 // class App extends Component{
@@ -31,6 +32,8 @@ import ExpenseList from "./components/ExpenseList";
   const [charge, setCharge] = useState("")
 
   const [amount, setAmount] = useState(0)
+
+   const [alert, setAlert] = useState({show: false})
 
   const [expenses, setExpenses] = useState([{
       id: 1,
@@ -68,10 +71,11 @@ import ExpenseList from "./components/ExpenseList";
       setExpenses(newExpeses)
       setCharge("")
       setAmount(0)
+      handleAlert({type: "success", text: "아이템이 생성되었습니다."})
     } else{
       console.log('error')
+      handleAlert({type: "danger", text: "charge는 빈 값일 수 없으며 amount는 0 보다 커야 합니다."})
     }
-
   }
 
   const handleDelete = (id) => {
@@ -84,11 +88,20 @@ import ExpenseList from "./components/ExpenseList";
        expense.id !== id
      )
      setExpenses(newExpenses)
+     handleAlert({type: "danger" , text: "아이템이 삭제되었습니다."})
+  }
+
+  const handleAlert =({type, text}) =>{
+    setAlert({show: true, type, text})
+    setTimeout(()=>{
+      setAlert({show: false})
+    },7000)
   }
 
   // render(){
     return(
       <main className = "main-container">
+        { alert.show ? <Alert type={alert.type} text={alert.text} /> : null }
         <h1>예산 계산기</h1>
         <div style = {{width:'100%',backgroundColor: 'white', padding: '1rem' }}>
           {/* Expense Form */}
