@@ -127,7 +127,14 @@ import Alert from "./components/Alert";
         <div style = {{display: 'flex', justifyContent:'end', marginTop: '1rem'}}>
           <p style = {{fontSize: '2rem'}}>
             총지출:
-            <span>원</span>
+            <span>
+              {
+                expenses.reduce((acc, curr) => {
+                  return (acc += curr.amount)
+                }, 0)
+              }
+              원
+            </span>
           </p>
         </div>
       </main>
